@@ -1,0 +1,8 @@
+﻿New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" `
+-Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
+
+https://github.com/OmniSharp/omnisharp-roslyn/issues/2261
+
+HASH - cryptografia, utilizada para permitir que dados sensíveis não sejam obtidos. MD5 é é passível de decrypt, o melhor é usar o SHA 512.
+
+TOKEN - outro tipo de cryptografia que pode ser decryptada em json (header, payload, signature)

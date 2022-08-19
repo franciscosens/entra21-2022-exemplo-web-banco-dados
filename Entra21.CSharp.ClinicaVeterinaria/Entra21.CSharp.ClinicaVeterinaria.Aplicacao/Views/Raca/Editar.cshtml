@@ -2,17 +2,20 @@
 @{
     Layout = "~/Pages/Shared/_Layout.cshtml";
 
+    var raca = ViewBag.Raca as Raca;
+
     var especies = ViewBag.Especies as List<string>;
 }
 
-<h2>Cadastro de Raça</h2>
+<h2>Editar de Raça</h2>
 
-<form action="/raca/cadastrar" method="POST">
+<form action="/raca/editar" method="POST">
+    <input type="hidden" name="id" value="@raca.Id" />
     <div>
         <label for="campo_nome" class="form-label">
             Nome <span class="text-danger" fw-bold>*</span>
         </label>
-        <input type="text" id="campo_nome" name="nome" class="form-control" required="required" />
+        <input type="text" id="campo_nome" name="nome" class="form-control" required="required" value="@raca.Nome" />
     </div>
 
     <div class="mb-3">
@@ -20,10 +23,10 @@
             Espécie <span class="text-danger" fw-bold>*</span>
         </label>
         <select id="campo_especie" name="especie" class="form-select" required="required">
-            <option selected="selected" disabled="disabled" value="">Selecione uma opção</option>
             @foreach (var especie in especies)
             {
-                <option value="@especie">@especie</option>
+                <option value="@especie"
+                    @(especie == raca.Especie ? "selected" : "")>@especie</option>
 
             }
         </select>
