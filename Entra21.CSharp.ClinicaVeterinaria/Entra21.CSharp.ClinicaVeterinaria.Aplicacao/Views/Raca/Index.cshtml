@@ -1,12 +1,10 @@
-﻿@{
-    Layout = "~/Pages/Shared/_Layout.cshtml";
-}
+﻿@model List<Raca>
 
 <h2>Lista de Raças</h2>
 
 <div class="row mb-3">
     <div class="text-end">
-        <a href="/raca/cadastrar"
+        <a asp-action="cadastrar"
            class="btn btn-primary">Cadastrar</a>
     </div>
 </div>
@@ -23,18 +21,17 @@
     </thead>
     <tbody>
         <!-- Lugar dos registros da tabela-->
-        @foreach (var raca in ViewBag.Racas)
+        @foreach (var raca in Model)
         {
             <tr>
                 <!-- Linha-->
                 <td>@raca.Nome</td> <!-- Coluna específica para body-->
                 <td>@raca.Especie</td>
                 <td>
-                    <a href="/raca/apagar?id=@raca.Id">Apagar</a>
-                    <a href="/raca/editar?id=@raca.Id">Editar</a>
+                    <a asp-action="editar" asp-route-id="@raca.Id">Editar</a>
+                    <a asp-action="apagar" asp-route-id="@raca.Id">Apagar</a>
                 </td>
             </tr>
         }
-
     </tbody>
 </table>
