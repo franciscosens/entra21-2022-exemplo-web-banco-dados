@@ -20,8 +20,16 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Mapeamentos
 
             builder.Property(x => x.Crmv)
                 .HasColumnType("VARCHAR")
-                .HasMaxLength(14)
+                .HasMaxLength(7)
                 .IsRequired();
+
+            builder.Property(x => x.Salario)
+                .HasColumnType("DECIMAL")
+                .HasPrecision(9, 2);
+
+            builder.Property(x => x.Empregado)
+                .HasColumnType("BIT")
+                .HasDefaultValue(true);
         }
     }
 }
