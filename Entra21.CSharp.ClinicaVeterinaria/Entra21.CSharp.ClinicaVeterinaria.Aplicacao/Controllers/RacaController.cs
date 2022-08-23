@@ -1,7 +1,7 @@
 ﻿using Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados;
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Enuns;
 using Entra21.CSharp.ClinicaVeterinaria.Servico;
-using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels;
+using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Racas;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Aplicacao.Controllers
@@ -44,8 +44,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Aplicacao.Controllers
         }
 
         [HttpPost("/raca/Cadastrar")]
-        public IActionResult Cadastrar(
-            [FromForm] RacaCadastrarViewModel racaCadastrarViewModel)
+        public IActionResult Cadastrar([FromForm] RacaCadastrarViewModel racaCadastrarViewModel)
         {
             // Valida o parâmetro recebido na Action se é inválido
             if (!ModelState.IsValid)
@@ -88,8 +87,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Aplicacao.Controllers
         }
 
         [HttpPost("/raca/editar")]
-        public IActionResult Editar(
-            [FromForm] RacaEditarViewModel racaEditarViewModel)
+        public IActionResult Editar([FromForm] RacaEditarViewModel racaEditarViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -105,9 +103,10 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Aplicacao.Controllers
 
         private List<string> ObterEspecies()
         {
-            return Enum.GetNames<Especie>()
-                            .OrderBy(x => x)
-                            .ToList();
+            return Enum
+                .GetNames<Especie>()
+                .OrderBy(x => x)
+                .ToList();
         }
     }
 }
