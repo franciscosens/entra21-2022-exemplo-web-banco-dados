@@ -30,6 +30,20 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Mapeamentos
             builder.Property(x => x.Empregado)
                 .HasColumnType("BIT")
                 .HasDefaultValue(true);
+
+            builder.HasData(
+                new Veterinario
+                {
+                    Id = 1,
+                    Nome = "Amanda",
+                    Crmv = "66666SC"
+                },
+                new Veterinario
+                {
+                    Id = 2,
+                    Nome = "Gui",
+                    Crmv = "89898SC"
+                });
         }
     }
 }
