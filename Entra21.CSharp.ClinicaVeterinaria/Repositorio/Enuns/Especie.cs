@@ -1,4 +1,4 @@
-﻿namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Enuns
+﻿namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Enums
 {
     public enum Especie
     {

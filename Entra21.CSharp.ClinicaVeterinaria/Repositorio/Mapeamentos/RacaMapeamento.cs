@@ -15,7 +15,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Mapeamentos
         {
             builder.ToTable("racas");
 
-            builder.HasKey(x => x.Id).HasName("id");
+            builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Especie)
                 .HasColumnType("VARCHAR")

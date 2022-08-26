@@ -1,0 +1,70 @@
+﻿<div class="modal fade" id="cadastroPetModal" tabindex="-1" aria-labelledby="cadastroPetModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cadastroPetModalLabel">Cadastro de Pet</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="cadastroPetModalResponsavel" class="form-label">Responsável <span class="text-danger">*</span></label>
+                        <select id="cadastroPetModalResponsavel" class="form-select"></select>
+                    </div>
+                    <div class="col-6">
+                        <label for="cadastroPetModalRaca" class="form-label">Raça <span class="text-danger">*</span></label>
+                        <select id="cadastroPetModalRaca" class="form-select"></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label for="cadastroPetModalNome" class="form-label">Nome <span class="text-danger">*</span></label>
+                        <input id="cadastroPetModalNome" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="cadastroPetModalIdade" class="form-label">Idade <span class="text-danger">*</span></label>
+                        <input type="number" id="cadastroPetModalIdade" class="form-control"/>
+                    </div>
+                    <div class="col-6">
+                        <span class="form-label">Gênero <span class="text-danger">*</span></span>
+                        <div class="form-check">
+                            <input type="radio" id="cadastroPetGeneroFeminino" name="cadastroPetModalGenero" class="form-check-input" value="0" checked="checked"/>
+                            <label class="form-check-label" for="cadastroPetGeneroFeminino">Feminino</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="cadastroPetGeneroMasculino" name="cadastroPetModalGenero" class="form-check-input" value="1"/>
+                            <label class="form-check-label" for="cadastroPetGeneroMasculino">Masculino</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="cadastroPetModalAltura" class="form-label">Altura <span class="text-danger">*</span></label>
+                        <input id="cadastroPetModalAltura" class="form-control"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="cadastroPetModalPeso" class="form-label">Peso <span class="text-danger">*</span></label>
+                        <input id="cadastroPetModalPeso" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                          <label for="cadastroPetModalArquivo" class="form-label">Imagem</label>
+                          <input class="form-control" type="file" id="cadastroPetModalArquivo">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                <button type="button" class="btn btn-primary" id="cadastroPetModalSalvar"><i class="fa-solid fa-floppy-disk"></i> Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,7 +4,8 @@
     public class Raca : EntidadeBase
     {
         public string Nome { get; set; }
-
         public string Especie { get; set; }
+        
+        public IList<Pet> Pets { get; set; }
     }
 }

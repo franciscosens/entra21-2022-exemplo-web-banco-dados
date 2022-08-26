@@ -8,7 +8,9 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Mapeamentos
     {
         public void Configure(EntityTypeBuilder<Veterinario> builder)
         {
-            builder.HasKey(x => x.Id).HasName("Id");
+            builder.ToTable("veterinarios");
+            
+            builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Nome)
                 .HasColumnType("VARCHAR")

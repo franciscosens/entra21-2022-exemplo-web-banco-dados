@@ -7,6 +7,9 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados
     public class ClinicaVeterinariaContexto : DbContext
     {
         public DbSet<Raca> Racas { get; set; }
+        public DbSet<ResponsavelContato> ResponsavelContatos { get; set; }
+        public DbSet<Responsavel> Responsaveis { get; set; }
+        public DbSet<Pet> Pets { get; set; }
         public DbSet<Veterinario> Veterinarios { get; set; }
 
         public ClinicaVeterinariaContexto(
@@ -33,6 +36,9 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados
             *   - executar a aplicação irá aplicar a migration */
             modelBuilder.ApplyConfiguration(new RacaMapeamento());
             modelBuilder.ApplyConfiguration(new VeterinarioMapeamento());
+            modelBuilder.ApplyConfiguration(new ResponsavelMapeamento());
+            modelBuilder.ApplyConfiguration(new ContatoMapeamento());
+            modelBuilder.ApplyConfiguration(new PetMapeamento());
         }
     }
 }

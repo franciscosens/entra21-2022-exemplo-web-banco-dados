@@ -1,0 +1,53 @@
+﻿@model ResponsavelContatoEditarViewModel
+@{
+    var contatos = Enum.GetValues<ResponsavelContatoTipo>().OrderBy(x => x.GetDisplayAttribute()).ToList();
+}
+
+<div class="modal" id="editarResponsavelContatoModal" tabindex="-1" aria-labelledby="editarResponsavelContatoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <form asp-controller="ResponsavelContato" asp-action="EditarModal" id="responsavel-contato-editar-form" data-id="@Model.Id" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarResponsavelContatoModalLabel">Editar de Contato</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" asp-for="Id"/>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <label asp-for="Tipo" class="form-label" span-required=""></label>
+                            <select asp-for="Tipo" class="form-select" required="required">
+                                <option selected="selected" disabled="disabled" value="">Selecione uma opção</option>
+                                @foreach (var contato in contatos)
+                                {
+                                    <option value="@contato.GetValue()">@contato.GetDisplayAttribute()</option>
+                                }
+                            </select>
+                            <span asp-validation-for="Tipo" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <label asp-for="Valor" class="form-label" span-required=""></label>
+                            <input asp-for="Valor" class="form-control"/>
+                            <span asp-validation-for="Valor" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <label asp-for="Observacao" class="form-label"></label>
+                            <textarea asp-for="Observacao" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Editar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

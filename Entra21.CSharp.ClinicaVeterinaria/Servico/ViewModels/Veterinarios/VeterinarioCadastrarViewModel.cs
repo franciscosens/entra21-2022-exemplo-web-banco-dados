@@ -12,7 +12,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Veterinarios
 
         [Display(Name = "CRMV")]
         [Required(ErrorMessage = "{0} deve ser preenchido")]
-        [StringLength(7, ErrorMessage = "{0} deve conter {1} caracteres")]
+        [StringLength(7, MinimumLength = 7, ErrorMessage = "{0} deve conter {1} caracteres")]
         public string Crmv { get; set; }
     }
 }

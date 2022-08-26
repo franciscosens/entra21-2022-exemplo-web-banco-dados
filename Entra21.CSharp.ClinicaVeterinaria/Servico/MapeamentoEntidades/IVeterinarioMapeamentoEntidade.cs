@@ -6,5 +6,6 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico.MapeamentoEntidades
     public interface IVeterinarioMapeamentoEntidade
     {
         Veterinario ConstruirCom(VeterinarioCadastrarViewModel viewModel);
+        void AtualizarCampos(Veterinario veterinario, VeterinarioEditarViewModel viewModel);
     }
 }

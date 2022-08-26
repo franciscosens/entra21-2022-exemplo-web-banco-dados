@@ -1,0 +1,28 @@
+﻿@model ResponsavelCadastrarViewModel
+
+<h3 class="h3">Cadastro de Responsável</h3>
+
+<form asp-action="Cadastrar" method="POST">
+    <div class="mb-3">
+        <label asp-for="NomeCompleto" class="form-label" span-required=""></label>
+        <input asp-for="NomeCompleto" class="form-control" />
+        <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Cpf" class="form-label" span-required=""></label>
+        <input asp-for="Cpf" class="form-control" />
+        <span asp-validation-for="Cpf" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Idade" class="form-label" span-required=""></label>
+        <input asp-for="Idade" class="form-control" />
+        <span asp-validation-for="Idade" class="text-danger"></span>
+    </div>
+
+    <div class="text-end">
+        <a asp-action="Index" class="btn btn-outline-danger"><i class="fa-solid fa-xmark"></i> Cancelar</a>
+        <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
+    </div>
+</form>

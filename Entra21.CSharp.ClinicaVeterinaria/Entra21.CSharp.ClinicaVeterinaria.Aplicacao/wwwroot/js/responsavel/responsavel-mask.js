@@ -1,0 +1,1 @@
+﻿VMasker(document.getElementById('cadastroPetModalIdade')).maskNumber();
