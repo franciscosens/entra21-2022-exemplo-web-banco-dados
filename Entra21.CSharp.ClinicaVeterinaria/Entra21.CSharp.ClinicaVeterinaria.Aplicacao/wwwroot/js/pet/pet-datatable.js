@@ -12,7 +12,7 @@
             data: null,
             width: '20%',
             render: function (data, type, pet) {
-                return `<img src="/Pets/${pet.caminhoArquivo}"/>`;
+                return `<img class="img-pet" src="/Pets/${pet.caminhoArquivo}"/>`;
             }
         },
         {data: 'raca.nome'},

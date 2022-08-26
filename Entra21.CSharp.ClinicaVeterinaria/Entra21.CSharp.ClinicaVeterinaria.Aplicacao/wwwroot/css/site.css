@@ -47,6 +47,10 @@ body {
     color: black;
 }
 
+.img-pet{
+    max-width: 100px;
+}
+
 /*
  * Sidebar
  */

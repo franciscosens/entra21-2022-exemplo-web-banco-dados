@@ -73,7 +73,8 @@ public class PetMapeamento : IEntityTypeConfiguration<Pet>
             Altura = 0.90m,
             Idade = 8,
             RacaId = 1,
-            ResponsavelId = 1
+            ResponsavelId = 1,
+            CaminhoArquivo = "fcd3850a-cbc7-47db-b52b-5e6c8f68bdd4.jpg"
         });
     }
 }
