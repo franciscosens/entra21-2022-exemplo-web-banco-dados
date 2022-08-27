@@ -21,4 +21,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Servico\Servico.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Views\Shared\" />
+	</ItemGroup>
 </Project>

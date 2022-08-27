@@ -8,11 +8,11 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico.Servicos;
 public class PetServico : IPetServico
 {
     private const string PastaImagens = "Pets";
-    private readonly IPetRespositorio _petRespositorio;
+    private readonly IPetRepositorio _petRespositorio;
     private readonly IPetMapeamentoEntidade _mapeamentoEntidade;
 
     public PetServico(
-        IPetRespositorio petRespositorio, 
+        IPetRepositorio petRespositorio, 
         IPetMapeamentoEntidade mapeamentoEntidade)
     {
         _petRespositorio = petRespositorio;

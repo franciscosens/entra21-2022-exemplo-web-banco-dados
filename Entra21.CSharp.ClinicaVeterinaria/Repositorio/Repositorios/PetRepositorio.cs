@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Repositorios;
 
-public class PetRepositorio : IPetRespositorio
+public class PetRepositorio : IPetRepositorio
 {
     private readonly ClinicaVeterinariaContexto _contexto;
 
@@ -45,7 +45,8 @@ public class PetRepositorio : IPetRespositorio
 
     public IList<Pet> ObterTodos() => 
         _contexto.Pets
-            .Include(x => x.Responsavel) // INNER JOIN com a tabela de Responsaveis
+        // INNER JOIN com a tabela de Responsaveis
+            .Include(x => x.Responsavel) 
             .Include(x => x.Raca)
             .ToList();
 }

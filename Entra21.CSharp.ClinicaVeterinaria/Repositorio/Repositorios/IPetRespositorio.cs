@@ -2,7 +2,7 @@
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Repositorios;
 
-public interface IPetRespositorio
+public interface IPetRepositorio
 {
     bool Apagar(int id);
     Pet Cadastrar(Pet pet);

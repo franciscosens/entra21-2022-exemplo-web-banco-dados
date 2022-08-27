@@ -3,11 +3,11 @@ using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Repositorios;
 
-public class ResponsavelContatoRepository : IResponsavelContatoRepository
+public class ResponsavelContatoRepositorio : IResponsavelContatoRepositorio
 {
     private readonly ClinicaVeterinariaContexto _contexto;
 
-    public ResponsavelContatoRepository(ClinicaVeterinariaContexto contexto)
+    public ResponsavelContatoRepositorio(ClinicaVeterinariaContexto contexto)
     {
         _contexto = contexto;
     }

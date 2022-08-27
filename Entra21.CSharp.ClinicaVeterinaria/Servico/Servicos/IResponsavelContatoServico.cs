@@ -3,7 +3,7 @@ using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Contatos;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Servico.Servicos;
 
-public interface IResponsavelContatoService
+public interface IResponsavelContatoServico
 {
     ResponsavelContato Cadastrar(ResponsavelContatoCadastrarViewModel viewModel);
     ResponsavelContato? Apagar(int id);

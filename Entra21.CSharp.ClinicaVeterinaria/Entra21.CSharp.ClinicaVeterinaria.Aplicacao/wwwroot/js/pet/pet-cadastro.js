@@ -42,8 +42,8 @@ let cadastrarPet = () => {
     let genero = document.querySelector('input[name="cadastroPetModalGenero"]:checked').value;
     let arquivo = document.getElementById('cadastroPetModalArquivo').files[0];
     debugger;
-    altura = altura.replace(',', '.').replace('m', '').trim();
-    peso = peso.replace(',', '.').replace('kg', '').trim();
+    altura = altura.replace('m', '').trim();
+    peso = peso.replace('kg', '').trim();
 
     let statusResponse = 0;
 

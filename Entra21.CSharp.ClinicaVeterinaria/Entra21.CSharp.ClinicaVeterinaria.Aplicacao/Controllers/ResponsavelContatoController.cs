@@ -7,9 +7,9 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Aplicacao.Controllers;
 [Route("responsavelContato")]
 public class ResponsavelContatoController : Controller
 {
-    private readonly IResponsavelContatoService _responsavelContatoService;
+    private readonly IResponsavelContatoServico _responsavelContatoService;
 
-    public ResponsavelContatoController(IResponsavelContatoService responsavelContatoService)
+    public ResponsavelContatoController(IResponsavelContatoServico responsavelContatoService)
     {
         _responsavelContatoService = responsavelContatoService;
     }

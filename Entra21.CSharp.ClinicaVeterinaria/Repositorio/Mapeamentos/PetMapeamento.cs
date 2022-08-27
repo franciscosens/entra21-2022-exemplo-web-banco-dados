@@ -2,9 +2,10 @@
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
+// git clone https://github.com/franciscosens/entra21-2022-exemplo-web-banco-dados.git
+// -b feature/completa
 namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Mapeamentos;
-
+// feature/completa
 public class PetMapeamento : IEntityTypeConfiguration<Pet>
 {
     public void Configure(EntityTypeBuilder<Pet> builder)

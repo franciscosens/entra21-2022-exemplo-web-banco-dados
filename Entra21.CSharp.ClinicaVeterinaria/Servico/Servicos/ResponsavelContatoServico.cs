@@ -6,14 +6,14 @@ using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Contatos;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Servico.Servicos;
 
-public class ResponsavelContatoService : IResponsavelContatoService
+public class ResponsavelContatoServico : IResponsavelContatoServico
 {
-    private readonly IResponsavelContatoRepository _responsavelContatoRepository;
+    private readonly IResponsavelContatoRepositorio _responsavelContatoRepository;
     private readonly IResponsavelContatoMapeamentoEntidade _mapeamentoEntidade;
     private readonly IResponsavelContatoMapeamentoViewModel _mapeamentoViewModel;
 
-    public ResponsavelContatoService(
-        IResponsavelContatoRepository responsavelContatoRepository,
+    public ResponsavelContatoServico(
+        IResponsavelContatoRepositorio responsavelContatoRepository,
         IResponsavelContatoMapeamentoEntidade mapeamentoEntidade, 
         IResponsavelContatoMapeamentoViewModel mapeamentoViewModel)
     {

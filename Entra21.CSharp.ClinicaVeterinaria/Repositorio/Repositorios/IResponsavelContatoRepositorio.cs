@@ -2,7 +2,7 @@
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Repositorios;
 
-public interface IResponsavelContatoRepository
+public interface IResponsavelContatoRepositorio
 {
     ResponsavelContato Cadastrar(ResponsavelContato responsavelContato);
     ResponsavelContato? Apagar(int id);
