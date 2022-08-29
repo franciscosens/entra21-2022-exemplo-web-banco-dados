@@ -1,20 +1,26 @@
-﻿let questionarApagar = (botaoApagar) => {
-    botaoApagar.addEventListener('click', () => {
-        swal({
-            title: 'AVISO',
-            text: 'Deseja apagar este registro?',
-            icon: 'warning',
-            buttons: ['Não', 'Sim'],
-            dangerMode: true,
-            closeModal: false
-        }).then((confirmou) => {
-            if (confirmou)
-                apagar(botaoApagar);
-        });
+﻿$('table').on('click', '.pet-apagar', (event) => {
+    let element = event.target.tagName === 'I'
+        ? event.target.parentElement
+        : event.target;
+    
+    petQuestionarApagar(element);
+});
+
+let petQuestionarApagar = (botaoApagar) => {
+    swal({
+        title: 'AVISO',
+        text: 'Deseja apagar este registro?',
+        icon: 'warning',
+        buttons: ['Não', 'Sim'],
+        dangerMode: true,
+        closeModal: false
+    }).then((confirmou) => {
+        if (confirmou)
+            petApagar(botaoApagar);
     });
 }
 
-let apagar = (botaoApagar) => {
+let petApagar = (botaoApagar) => {
     let id = botaoApagar.getAttribute('data-id');
 
     toastr.clear();

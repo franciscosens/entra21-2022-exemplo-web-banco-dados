@@ -1,61 +1,97 @@
-﻿VMasker(document.getElementById('cadastroPetModalPeso')).maskMoney({
-    // Decimal precision -> '90'
-    precision: 2,
-    // Decimal separator -> ',90'
-    separator: ',',
-    suffixUnit: 'kg'
+﻿let pesoMask = IMask(document.getElementById('cadastroPetModalPeso'), {
+    mask: Number,  // enable number mask
+    scale: 2,  // digits after point, 0 for integers
+    signed: false,  // disallow negative
+    thousandsSeparator: '',  // any single char
+    radix: ',',  // fractional delimiter
+    mapToRadix: ['.'],  // symbols to process as radix
+    padFractionalZeros: true,  // if true, then pads zeros at end to the length of scale
+    normalizeZeros: true,  // appends or removes zeros at ends
+    // additional number interval options (e.g.)
+    min: 0,
+    max: 120.00
 });
 
-VMasker(document.getElementById('cadastroPetModalAltura')).maskMoney({
-    // Decimal precision -> '90'
-    precision: 2,
-    // Decimal separator -> ',90'
-    separator: ',',
-    suffixUnit: 'm'
+let alturaMask = IMask(document.getElementById('cadastroPetModalAltura'), {
+    mask: Number,  // enable number mask
+    scale: 2,  // digits after point, 0 for integers
+    signed: false,  // disallow negative
+    thousandsSeparator: '',  // any single char
+    padFractionalZeros: true,  // if true, then pads zeros at end to the length of scale
+    normalizeZeros: true,  // appends or removes zeros at ends
+    radix: ',',  // fractional delimiter
+    mapToRadix: ['.'],  // symbols to process as radix
+    // additional number interval options (e.g.)
+    min: 0,
+    max: 1.60
 });
 
-VMasker(document.getElementById('cadastroPetModalIdade')).maskNumber();
+let idadeMask = IMask(document.getElementById('cadastroPetModalIdade'), {
+    mask: Number,  // enable number mask
+
+    // additional number interval options (e.g.)
+    min: 0,
+    max: 100
+});
 
 document.getElementById('cadastroPetModalSalvar')
-    .addEventListener('click', () => cadastrarPet());
+    .addEventListener('click', () => petHandleCadastrarButton());
 
-let limparCampos = () => {
+
+let petHandleCadastrarButton = () => {
+    let id = document.getElementById('cadastroPetModalId').value;
+    let formData = petCadastroEditarGerarFormData();
+
+    if (id === '') {
+        petCadastrarPet(formData);
+        return;
+    }
+
+    formData.append('id', id);
+    
+    petEditarPet(formData);
+}
+
+let petLimparCampos = () => {
+    document.getElementById('cadastroPetModalId').value = '';
     document.getElementById('cadastroPetModalNome').value = '';
     document.getElementById('cadastroPetModalIdade').value = '';
     document.getElementById('cadastroPetModalPeso').value = '';
     document.getElementById('cadastroPetModalAltura').value = '';
+    document.getElementById('cadastroPetModalArquivo').value = '';
 
-    document.getElementById('cadastroPetModalResponsavel').value = '';
-    document.getElementById('cadastroPetModalResponsavel').dispatchEvent(new Event('change'));
-
-    document.getElementById('cadastroPetModalRaca').value = '';
-    document.getElementById('cadastroPetModalRaca').dispatchEvent(new Event('change'));
+    $('#cadastroPetModalResponsavel').val('').trigger('change');
+    $('#cadastroPetModalRaca').val('').trigger('change');
 }
 
-let cadastrarPet = () => {
+let petCadastroEditarGerarFormData = () => {
     let nome = document.getElementById('cadastroPetModalNome').value;
     let idade = document.getElementById('cadastroPetModalIdade').value;
     let peso = document.getElementById('cadastroPetModalPeso').value;
     let altura = document.getElementById('cadastroPetModalAltura').value;
-    let responsavel = document.getElementById('cadastroPetModalResponsavel').value;
-    let raca = document.getElementById('cadastroPetModalRaca').value;
+    let responsavelId = document.getElementById('cadastroPetModalResponsavel').value;
+    let racaId = document.getElementById('cadastroPetModalRaca').value;
     let genero = document.querySelector('input[name="cadastroPetModalGenero"]:checked').value;
     let arquivo = document.getElementById('cadastroPetModalArquivo').files[0];
-    debugger;
+
     altura = altura.replace('m', '').trim();
     peso = peso.replace('kg', '').trim();
 
-    let statusResponse = 0;
-
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append('nome', nome);
     formData.append('idade', idade);
     formData.append('peso', peso);
     formData.append('altura', altura);
-    formData.append('responsavelId', responsavel);
-    formData.append('racaId', raca);
+    formData.append('responsavelId', responsavelId);
+    formData.append('racaId', racaId);
     formData.append('genero', genero);
     formData.append('arquivo', arquivo);
+
+    return formData;
+};
+
+let petCadastrarPet = (formData) => {
+    let statusResponse = 0;
 
     fetch('/pet/cadastrar', {
         method: 'POST',
@@ -70,7 +106,7 @@ let cadastrarPet = () => {
             if (statusResponse === 200) {
                 bootstrap.Modal.getInstance(document.getElementById('cadastroPetModal')).hide();
 
-                limparCampos();
+                petLimparCampos();
 
                 $('#pet-table').DataTable().ajax.reload();
 

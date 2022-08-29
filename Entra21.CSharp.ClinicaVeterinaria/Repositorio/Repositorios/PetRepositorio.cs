@@ -37,11 +37,16 @@ public class PetRepositorio : IPetRepositorio
 
     public void Editar(Pet pet)
     {
-        throw new NotImplementedException();
+        _contexto.Pets.Update(pet);
+        _contexto.SaveChanges();
     }
 
     public Pet? ObterPodId(int id) => 
-        _contexto.Pets.FirstOrDefault(x => x.Id == id);
+        _contexto.Pets
+            // INNER JOIN com a tabela de Responsaveis
+            .Include(x => x.Responsavel) 
+            .Include(x => x.Raca)
+            .FirstOrDefault(x => x.Id == id);
 
     public IList<Pet> ObterTodos() => 
         _contexto.Pets

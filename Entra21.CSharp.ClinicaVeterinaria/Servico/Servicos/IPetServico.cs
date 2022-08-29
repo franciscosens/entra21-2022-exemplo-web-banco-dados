@@ -8,7 +8,7 @@ public interface IPetServico
     bool Apagar(int id);
 
     Pet Cadastrar(PetCadastrarViewModel viewModel, string caminhoArquivos);
-    // bool Editar(PetEditarViewModel viewModel);
+    bool Editar(PetEditarViewModel viewModel, string caminhoArquivos);
     Pet? ObterPorId(int id);
     IList<Pet> ObterTodos();
 }

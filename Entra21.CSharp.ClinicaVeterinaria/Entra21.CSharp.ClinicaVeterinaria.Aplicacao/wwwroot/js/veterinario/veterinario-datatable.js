@@ -31,9 +31,9 @@ document.querySelector('table').addEventListener('click', function (event) {
         let classList = button.classList;
 
         if (classList.contains('veterinario-editar')) { // Verificar se é o botão de editar
-            editarPreencherModal(button);
+            veterinarioEditarPreencherModal(button);
         } else if (classList.contains('veterinario-apagar')) { // Verificar se é o botão de apagar
-            questionarApagar(button);
+            veterinarioQuestionarApagar(button);
         }
     }
 });

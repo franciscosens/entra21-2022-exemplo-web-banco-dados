@@ -44,7 +44,10 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Mapeamentos
                 {
                     Id = 2,
                     Nome = "Gui",
-                    Crmv = "89898SC"
+                    Crmv = "89898SC",
+                    Idade = 30,
+                    Empregado = true,
+                    Salario = 20391.20m
                 });
         }
     }

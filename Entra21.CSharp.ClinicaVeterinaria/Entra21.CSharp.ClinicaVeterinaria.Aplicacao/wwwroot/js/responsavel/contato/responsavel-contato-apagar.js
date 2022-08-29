@@ -1,7 +1,7 @@
 ﻿document.querySelectorAll(".contato-button-apagar")
-    .forEach(button => button.addEventListener('click', () => questionarApagar(button)));
+    .forEach(button => button.addEventListener('click', () => contatoQuestionarApagar(button)));
 
-let questionarApagar = (botaoApagar) => {
+let contatoQuestionarApagar = (botaoApagar) => {
     botaoApagar.addEventListener('click', () => {
         swal({
             title: 'AVISO',

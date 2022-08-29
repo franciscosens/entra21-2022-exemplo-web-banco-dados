@@ -1,8 +1,8 @@
 ﻿document.querySelectorAll(".responsavel-contato-editar")
-    .forEach(button => button.addEventListener('click', () => editarPreencherModal(button)));
+    .forEach(button => button.addEventListener('click', () => contatoEditarPreencherModal(button)));
 
 
-let editarPreencherModal = (button) => {
+let contatoEditarPreencherModal = (button) => {
     debugger;
     let id = button.getAttribute('data-id');
     
@@ -11,13 +11,11 @@ let editarPreencherModal = (button) => {
         .then((response) => {
             document.getElementById("modal-contato").innerHTML = response;
 
-            abrirModalEditarAtribuindoClickBotaoSalvarCriadoDinamicamente();
+            contatoAbrirModalEditarAtribuindoClickBotaoSalvarCriadoDinamicamente();
         })
 }
 
-
-
-let abrirModalEditarAtribuindoClickBotaoSalvarCriadoDinamicamente = () => {
+let contatoAbrirModalEditarAtribuindoClickBotaoSalvarCriadoDinamicamente = () => {
 
     if (document.getElementsByClassName("modal-backdrop show").length > 0) {
         document.getElementsByTagName("body")[0].removeChild(document.getElementsByClassName("modal-backdrop show")[0]);
@@ -25,13 +23,12 @@ let abrirModalEditarAtribuindoClickBotaoSalvarCriadoDinamicamente = () => {
 
     let modal = new bootstrap.Modal(document.getElementById('editarResponsavelContatoModal'), {});
     modal.show();
-
-    // atribuirClickBotaoSalvarCriadoDinamicamente
+    
     document.getElementById('responsavel-contato-editar-form')
-        .addEventListener('submit', (event) => updateContact(event));
+        .addEventListener('submit', (event) => contatoAtualizarContato(event));
 }
 
-let updateContact = (event) => {
+let contatoAtualizarContato = (event) => {
     event.preventDefault();
 
     let id = parseInt(event.target.getAttribute("data-id"));

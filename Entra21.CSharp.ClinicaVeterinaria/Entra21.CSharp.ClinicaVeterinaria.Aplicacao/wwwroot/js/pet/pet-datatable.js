@@ -9,10 +9,15 @@
     processing: true,
     columns: [
         {
+            class: 'text-center',
             data: null,
-            width: '20%',
+            width: '10%',
             render: function (data, type, pet) {
-                return `<img class="img-pet" src="/Pets/${pet.caminhoArquivo}"/>`;
+                if(pet.caminhoArquivo !== ''){
+                    return `<img class="img-pet" src="/Uploads/Pets/${pet.caminhoArquivo}" alt="dog"/>`;
+                }
+
+                return `<img class="img-pet" src="/images/pet.png" alt="dog"/>`;
             }
         },
         {data: 'raca.nome'},
@@ -35,17 +40,4 @@
             }
         }
     ],
-});
-
-document.querySelector('table').addEventListener('click', function (event) {
-    if (event.target.tagName.toLowerCase() === 'button') {
-        let button = event.target;
-        let classList = button.classList;
-
-        if (classList.contains('pet-editar')) { // Verificar se é o botão de editar
-            editarPreencherModal(button);
-        } else if (classList.contains('pet-apagar')) { // Verificar se é o botão de apagar
-            questionarApagar(button);
-        }
-    }
 });

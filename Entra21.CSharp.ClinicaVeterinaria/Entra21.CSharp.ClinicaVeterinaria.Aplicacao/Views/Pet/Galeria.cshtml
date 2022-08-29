@@ -1,0 +1,32 @@
+@using Entra21.CSharp.ClinicaVeterinaria.Servico.Helpers
+@model IList<Pet>
+
+@{
+    var caminhoServidor = ViewBag.CaminhoServidor;
+}
+
+<div class="row">
+    <div class="col-12">
+        <h4 class="h4 text-center text-primary">Galeria de Pets</h4>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var pet in Model)
+    {
+        <div class="col">
+            <div class="card">
+                <img src="@(string.IsNullOrEmpty(pet.CaminhoArquivo) || !File.Exists(ArquivoHelper.ObterCaminhoArquivoServidor(pet.CaminhoArquivo, caminhoServidor)) 
+                              ? "/images/pet-bigger.png" 
+                              : $"/{ArquivoHelper.ObterCaminhoArquivo(pet.CaminhoArquivo)}")" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@($"{pet.Raca.Nome} {pet.Nome}")</h5>
+                    <p class="card-text"><span class="fw-bold">Dono: </span> @pet.Responsavel.NomeCompleto</p>
+                    <p class="card-text"><span class="fw-bold">Altura: </span> @pet.Altura</p>
+                    <p class="card-text"><span class="fw-bold">Peso: </span> @pet.Peso</p>
+                    <p class="card-text"><span class="fw-bold">Idade: </span> @pet.Idade</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

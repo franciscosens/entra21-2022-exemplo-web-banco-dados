@@ -2,10 +2,9 @@
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-// git clone https://github.com/franciscosens/entra21-2022-exemplo-web-banco-dados.git
-// -b feature/completa
+
 namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Mapeamentos;
-// feature/completa
+
 public class PetMapeamento : IEntityTypeConfiguration<Pet>
 {
     public void Configure(EntityTypeBuilder<Pet> builder)
@@ -65,17 +64,79 @@ public class PetMapeamento : IEntityTypeConfiguration<Pet>
             .WithMany(x => x.Pets)
             .HasForeignKey(x => x.RacaId);
 
-        builder.HasData(new Pet
-        {
-            Id = 1,
-            Nome = "Mimi",
-            Genero = PetGenero.Masculino,
-            Peso = 20.40m,
-            Altura = 0.90m,
-            Idade = 8,
-            RacaId = 1,
-            ResponsavelId = 1,
-            CaminhoArquivo = "fcd3850a-cbc7-47db-b52b-5e6c8f68bdd4.jpg"
-        });
+        builder.HasData(
+            new Pet
+            {
+                Id = 1,
+                Nome = "PerMimi",
+                Genero = PetGenero.Feminino,
+                Peso = 20.40m,
+                Altura = 0.90m,
+                Idade = 8,
+                RacaId = 1,
+                ResponsavelId = 1,
+                CaminhoArquivo = "8BE47EBF-0F7A-455F-B4DB-58001DD9D577.jpg"
+            },
+            new Pet
+            {
+                Id = 2,
+                Nome = "RagMimo",
+                Genero = PetGenero.Feminino,
+                Peso = 14.0m,
+                Altura = 0.50m,
+                Idade = 7,
+                RacaId = 4,
+                ResponsavelId = 1,
+                CaminhoArquivo = "275E5840-F48D-4E7B-9156-D038C9AB89B4.jpg"
+            },
+            new Pet
+            {
+                Id = 3,
+                Nome = "SibMoa",
+                Genero = PetGenero.Masculino,
+                Peso = 25.0m,
+                Altura = 0.45m,
+                Idade = 7,
+                RacaId = 5,
+                ResponsavelId = 2,
+                CaminhoArquivo = "AC74D02A-D3FB-4810-BD05-1A9E46A212CC.webp"
+            },
+            new Pet
+            {
+                Id = 4,
+                Nome = "AkitMae",
+                Genero = PetGenero.Masculino,
+                Peso = 15.60m,
+                Altura = 1.10m,
+                Idade = 5,
+                RacaId = 2,
+                ResponsavelId = 2,
+                CaminhoArquivo = "E9B453D3-A676-4433-ABB1-05CCE015AA8F.jpg"
+            },
+            new Pet
+            {
+                Id = 5,
+                Nome = "SaoMio",
+                Genero = PetGenero.Masculino,
+                Peso = 15.60m,
+                Altura = 1.10m,
+                Idade = 5,
+                RacaId = 3,
+                ResponsavelId = 2,
+                CaminhoArquivo = "97CCCBCC-B8F9-4E49-AA64-509F3CE65686.webp"
+            },
+            new Pet
+            {
+                Id = 6,
+                Nome = "SaoMão",
+                Genero = PetGenero.Masculino,
+                Peso = 15.60m,
+                Altura = 1.10m,
+                Idade = 5,
+                RacaId = 3,
+                ResponsavelId = 1,
+                CaminhoArquivo = "04082D96-249D-4F20-B6C9-9E2FC2C947CB.webp"
+            }
+        );
     }
 }

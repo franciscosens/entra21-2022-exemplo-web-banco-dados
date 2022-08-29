@@ -3,8 +3,9 @@
         let button = event.target;
         let classList = button.classList;
 
-        if (classList.contains('responsavel-contato-editar')) { // Verificar se é o botão de apagar
-            editarPreencherModal(button);
+        // Verificar se é o botão de editar
+        if (classList.contains('responsavel-contato-editar')) { 
+            contatoEditarPreencherModal(button);
         }
     }
 });

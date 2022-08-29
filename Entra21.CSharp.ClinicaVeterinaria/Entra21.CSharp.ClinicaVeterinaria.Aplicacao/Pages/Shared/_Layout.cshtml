@@ -1,63 +1,84 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - Entra21.CSharp.ClinicaVeterinaria.Aplicacao</title>
-    <partial name="~/Views/_ViewImportsCss.cshtml" />
-    
+    <partial name="~/Views/_ViewImportsCss.cshtml"/>
+
 </head>
 <body>
-    @{
-        var controller = Context.GetRouteData().Values["controller"]?.ToString();
-    }
+@{
+    var controller = Context.GetRouteData().Values["controller"]?.ToString();
+    var action = Context.GetRouteData().Values["action"]?.ToString();
+}
 
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="/">
-                                <i class="fa-solid fa-house"></i>
-                                Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(controller == "Pet" ? "active" : "text-white")" asp-controller="Pet" asp-action="Index">
-                                <i class="fa-solid fa-paw"></i>
-                                Pets
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(controller == "Raca" ? "active" : "text-white")" asp-controller="Raca" asp-action="Index">
-                                <span data-feather="file"></span>
-                                Raças
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(controller == "Responsavel" ? "active" : "text-white")" asp-controller="Responsavel" asp-action="Index">
-                                <i class="fa-solid fa-user"></i>
-                                Responsáveis
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(controller == "Veterinario" ? "active" : "text-white")" asp-controller="Veterinario" asp-action="Index">
-                                <i class="fa-solid fa-user-doctor"></i>
-                                Veterinarios
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-2">
-                @RenderBody()
-            </main>
-        </div>
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" aria-current="page" href="/">
+                            <i class="fa-solid fa-house"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+
+                    </li>
+
+                    <li class="nav-item">
+                        <button class="btn btn-toggle collapsed sidebar-button" data-bs-toggle="collapse" data-bs-target="#pet-collapse" aria-expanded="false">
+                            <i class="fa-solid fa-paw"></i> Pet
+                        </button>
+                        <div class="collapse @(controller == "Pet" ? "show" : "")" id="pet-collapse">
+                            <ul class="btn-toggle-nav fw-normal pb-1 small">
+                                <li>
+                                    <a class="nav-link sidebar-item @(controller == "Pet" && action == "Galeria" ? "active" : "text-white")" asp-controller="Pet" asp-action="Galeria">
+                                        <i class="fa-solid fa-grip"></i>
+                                        Galeria
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link @(controller == "Pet" && action == "Index"  ? "active" : "text-white")" asp-controller="Pet" asp-action="Index">
+                                        <i class="fa-solid fa-list"></i>
+                                        Lista
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link @(controller == "Raca" ? "active" : "text-white")" asp-controller="Raca" asp-action="Index">
+                            <span data-feather="file"></span>
+                            Raças
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(controller == "Responsavel" ? "active" : "text-white")" asp-controller="Responsavel" asp-action="Index">
+                            <i class="fa-solid fa-user"></i>
+                            Responsáveis
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(controller == "Veterinario" ? "active" : "text-white")" asp-controller="Veterinario" asp-action="Index">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            Veterinarios
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-2">
+            @RenderBody()
+        </main>
     </div>
+</div>
 
-    <partial name="~/Views/_ViewImportsJavascripts.cshtml" />
+<partial name="~/Views/_ViewImportsJavascripts.cshtml"/>
 
-    @await RenderSectionAsync("Scripts", required: false)
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

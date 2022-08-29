@@ -6,11 +6,11 @@
         .then((response) => {
             document.getElementById("modal-contato").innerHTML = response;
 
-            abrirModalCadastroAtribuindoClickBotaoSalvarCriadoDinamicamente();
+            contatoAbrirModalCadastroAtribuindoClickBotaoSalvarCriadoDinamicamente();
         })
 });
 
-let abrirModalCadastroAtribuindoClickBotaoSalvarCriadoDinamicamente = () => {
+let contatoAbrirModalCadastroAtribuindoClickBotaoSalvarCriadoDinamicamente = () => {
 
     if (document.getElementsByClassName("modal-backdrop show").length > 0) {
         document.getElementsByTagName("body")[0].removeChild(document.getElementsByClassName("modal-backdrop show")[0]);
@@ -21,10 +21,10 @@ let abrirModalCadastroAtribuindoClickBotaoSalvarCriadoDinamicamente = () => {
 
     // atribuirClickBotaoSalvarCriadoDinamicamente
     document.getElementById('responsavel-contato-cadastrar-form')
-        .addEventListener('submit', (event) => saveContact(event));
+        .addEventListener('submit', (event) => contatoSalvarContato(event));
 }
 
-let saveContact = (event) => {
+let contatoSalvarContato = (event) => {
     event.preventDefault();
 
     let responsavelId = parseInt(document.getElementById('ResponsavelId').value);

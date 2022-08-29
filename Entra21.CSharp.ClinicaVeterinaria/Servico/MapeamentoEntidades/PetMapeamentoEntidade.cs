@@ -6,9 +6,8 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico.MapeamentoEntidades;
 
 public class PetMapeamentoEntidade : IPetMapeamentoEntidade
 {
-    public Pet ConstruirCom(PetCadastrarViewModel viewModel, string caminho)
-    {
-        return new Pet
+    public Pet ConstruirCom(PetCadastrarViewModel viewModel, string caminho) =>
+        new Pet
         {
             Nome = viewModel.Nome,
             Altura = viewModel.Altura.GetValueOrDefault(),
@@ -20,5 +19,18 @@ public class PetMapeamentoEntidade : IPetMapeamentoEntidade
             ResponsavelId = viewModel.ResponsavelId.GetValueOrDefault(),
             RacaId = viewModel.RacaId.GetValueOrDefault()
         };
+
+    public void AtualizarCom(Pet pet, PetEditarViewModel petEditarViewModel, string caminho)
+    {
+        pet.Nome = petEditarViewModel.Nome;
+        pet.Altura = petEditarViewModel.Altura.GetValueOrDefault();
+        pet.Peso = petEditarViewModel.Peso.GetValueOrDefault();
+        pet.Idade = petEditarViewModel.Idade.GetValueOrDefault();
+        pet.RacaId = petEditarViewModel.RacaId.GetValueOrDefault();
+        pet.ResponsavelId = petEditarViewModel.ResponsavelId.GetValueOrDefault();
+        pet.Genero = (PetGenero) petEditarViewModel.Genero;
+
+        if(!string.IsNullOrEmpty(caminho))
+            pet.CaminhoArquivo = caminho;
     }
 }

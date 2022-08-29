@@ -32,7 +32,7 @@ document.querySelector('table').addEventListener('click', function (event) {
         let classList = button.classList;
         
         if (classList.contains('responsavel-apagar')) { // Verificar se é o botão de apagar
-            questionarApagar(button);
+            veterinarioQuestionarApagar(button);
         }
     }
 });

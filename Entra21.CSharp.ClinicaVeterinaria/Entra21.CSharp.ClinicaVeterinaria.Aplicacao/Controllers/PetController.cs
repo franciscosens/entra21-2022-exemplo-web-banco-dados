@@ -23,10 +23,28 @@ public class PetController : Controller
         return View();
     }
 
+    [HttpGet("galeria")]
+    public IActionResult Galeria()
+    {
+        var pets = _petServico.ObterTodos();
+
+        ViewBag.CaminhoServidor = _webHostEnvironment.WebRootPath;
+
+        return View(pets);
+    }
+
     [HttpGet("obterTodos")]
     public IActionResult ObterTodos()
     {
         var pets = _petServico.ObterTodos();
+
+        return Ok(pets);
+    }
+
+    [HttpGet("obterPorId")]
+    public IActionResult ObterPorId([FromQuery] int id)
+    {
+        var pets = _petServico.ObterPorId(id);
 
         return Ok(pets);
     }
@@ -41,6 +59,18 @@ public class PetController : Controller
 
         return Ok(pet);
     }
+
+    [HttpPost("editar")]
+    public IActionResult Editar([FromForm]PetEditarViewModel petEditarViewModel)
+    {
+        if (!ModelState.IsValid)
+            return UnprocessableEntity(ModelState);
+
+        var atualizou = _petServico.Editar(petEditarViewModel, _webHostEnvironment.WebRootPath);
+
+        return Ok(new {status= atualizou});
+    }
+
 
     [HttpGet("apagar")]
     public IActionResult Apagar([FromQuery] int id)

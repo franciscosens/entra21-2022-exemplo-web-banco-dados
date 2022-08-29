@@ -8,5 +8,4 @@ public class Responsavel : EntidadeBase
     
     public IList<ResponsavelContato> Contatos { get; set; }
     public IList<Pet> Pets { get; set; }
-    // public List<Endereco> Enderecos { get; set; }
 }

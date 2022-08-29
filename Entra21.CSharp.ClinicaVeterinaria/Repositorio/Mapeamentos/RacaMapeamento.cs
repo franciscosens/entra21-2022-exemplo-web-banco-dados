@@ -1,4 +1,5 @@
 ﻿using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades;
+using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -29,19 +30,37 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Mapeamentos
                 .IsRequired()
                 .HasColumnName("nome");
 
-            // Populando a tabela de raça com dois registros
+            // Preencher a tabela de raça com registros
             builder.HasData(
                 new Raca
                 {
                     Id = 1,
-                    Nome = "Frajola",
-                    Especie = "Gato"
+                    Nome = "Persa",
+                    Especie = nameof(Especie.Gato)
                 },
                 new Raca
                 {
                     Id = 2,
-                    Nome = "Piupiu",
-                    Especie = "Capivara"
+                    Nome = "Akita Inu",
+                    Especie = nameof(Especie.Cachorro)
+                },
+                new Raca
+                {
+                    Id = 3,
+                    Nome = "São-bernardo",  
+                    Especie = nameof(Especie.Cachorro)
+                },
+                new Raca
+                {
+                    Id = 4,
+                    Nome = "Ragdoll", 
+                    Especie = nameof(Especie.Gato)
+                },
+                new Raca
+                {
+                    Id = 5,
+                    Nome = "Siberiano",
+                    Especie = nameof(Especie.Gato)
                 });
         }
     }

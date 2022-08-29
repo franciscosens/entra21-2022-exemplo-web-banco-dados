@@ -1,4 +1,4 @@
-﻿let questionarApagar = (botaoApagar) => {
+﻿let veterinarioQuestionarApagar = (botaoApagar) => {
     botaoApagar.addEventListener('click', () => {
         swal({
             title: 'AVISO',
@@ -9,12 +9,12 @@
             closeModal: false
         }).then((confirmou) => {
             if (confirmou)
-                apagar(botaoApagar);
+                responsavelApagar(botaoApagar);
         });
     });
 }
 
-let apagar = (botaoApagar) => {
+let responsavelApagar = (botaoApagar) => {
     let id = botaoApagar.getAttribute('data-id');
 
     window.location.href = `/responsavel/apagar?id=${id}`;

@@ -1,4 +1,4 @@
-﻿let editarPreencherModal = (botaoEditar) => {
+﻿let veterinarioEditarPreencherModal = (botaoEditar) => {
     let id = botaoEditar.getAttribute('data-id');
     let statusResponse = 0;
 
@@ -19,13 +19,11 @@
 
                 modal.show();
             }
-
-            console.log(data);
         })
         .catch((error) => console.log(error));
 };
 
-let botaoSalvarModalEditar = () => {
+let veterinarioBotaoSalvarModalEditar = () => {
     let id = parseInt(document.getElementById('editarVeterinarioModalId').value);
     let idade = document.getElementById('editarVeterinarioModalIdade').value
     let salario = document.getElementById('editarVeterinarioModalSalario').value;
@@ -58,5 +56,5 @@ let botaoSalvarModalEditar = () => {
 };
 
 document.getElementById('editarVeterinarioModalSalvar').addEventListener('click', () => {
-    botaoSalvarModalEditar();
+    veterinarioBotaoSalvarModalEditar();
 });

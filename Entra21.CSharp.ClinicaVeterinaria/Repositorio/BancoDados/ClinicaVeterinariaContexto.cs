@@ -25,7 +25,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados
             * Necessário instalar a ferramenta do dotnet ef core
             *      dotnet tool install --global dotnet-ef
             * 1ª etapa - Criar a entidade Raca.cs
-            * 2ª etapa - Criar o mapemanto da entidade para tabela RacaMapeamento.cs
+            * 2ª etapa - Criar o mapeamento da entidade para tabela RacaMapeamento.cs
             * 3ª etapa - Registrar o mapeamento no próprio Contexto
             * 4ª etapa - Gerar a migration
             *      dotnet ef migrations add AdicionarRacaTabela --project Repositorio --startup-project Entra21.CSharp.ClinicaVeterinaria.Aplicacao
@@ -37,7 +37,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados
             modelBuilder.ApplyConfiguration(new RacaMapeamento());
             modelBuilder.ApplyConfiguration(new VeterinarioMapeamento());
             modelBuilder.ApplyConfiguration(new ResponsavelMapeamento());
-            modelBuilder.ApplyConfiguration(new ContatoMapeamento());
+            modelBuilder.ApplyConfiguration(new ResponsavelContatoMapeamento());
             modelBuilder.ApplyConfiguration(new PetMapeamento());
         }
     }
