@@ -1,5 +1,5 @@
 ﻿@using Entra21.CSharp.ClinicaVeterinaria.Servico.Extensions
-@model ResponsavelContatoCadastrarViewModel
+@model Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.ResponsaveisContatos.ResponsavelContatoCadastrarViewModel
 @{
     var contatos = Enum.GetValues<ResponsavelContatoTipo>().OrderBy(x => x.GetDisplayAttribute()).ToList();
 }

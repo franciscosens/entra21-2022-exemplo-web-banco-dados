@@ -22,6 +22,158 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Consulta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DataConsulta")
+                        .HasColumnType("DATETIME2")
+                        .HasColumnName("data_consulta");
+
+                    b.Property<int>("PetId")
+                        .HasColumnType("INT")
+                        .HasColumnName("pet_id");
+
+                    b.Property<byte>("Status")
+                        .HasColumnType("TINYINT")
+                        .HasColumnName("status");
+
+                    b.Property<decimal>("Total")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("DECIMAL(10,2)")
+                        .HasColumnName("total");
+
+                    b.Property<int>("VeterinarioId")
+                        .HasColumnType("INT")
+                        .HasColumnName("veterinario_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PetId");
+
+                    b.HasIndex("VeterinarioId");
+
+                    b.ToTable("consultas", (string)null);
+                });
+
+            modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.ConsultaExame", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ConsultaId")
+                        .HasColumnType("INT")
+                        .HasColumnName("consulta_id");
+
+                    b.Property<int>("ExameId")
+                        .HasColumnType("INT")
+                        .HasColumnName("exame_id");
+
+                    b.Property<decimal>("Preco")
+                        .HasPrecision(9, 2)
+                        .HasColumnType("DECIMAL(9,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConsultaId");
+
+                    b.HasIndex("ExameId");
+
+                    b.ToTable("consultas_exames", (string)null);
+                });
+
+            modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Exame", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("descricao");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VARCHAR(50)")
+                        .HasColumnName("nome");
+
+                    b.Property<decimal>("Preco")
+                        .HasPrecision(9, 2)
+                        .HasColumnType("DECIMAL(9,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("exames", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nome = "Consulta Pediatrica",
+                            Preco = 249.90m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descricao = "Avaliação periodontal",
+                            Nome = "Atendimento odontológico",
+                            Preco = 249.90m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nome = "Corte de unha",
+                            Preco = 60.00m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Nome = "Fluidoterapia subcutânea",
+                            Preco = 175.00m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Descricao = "Aplicação de ataduras e imobilização",
+                            Nome = "Curativos ",
+                            Preco = 150.00m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Nome = "Coleta de exames",
+                            Preco = 70m
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Nome = "Administração de medicamento via oral",
+                            Preco = 50m
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Nome = "Ultrassom",
+                            Preco = 149.99m
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Nome = "Ressonância magnética",
+                            Preco = 900.75m
+                        });
+                });
+
             modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Pet", b =>
                 {
                     b.Property<int>("Id")
@@ -361,6 +513,44 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Consulta", b =>
+                {
+                    b.HasOne("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Pet", "Pet")
+                        .WithMany()
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Veterinario", "Veterinario")
+                        .WithMany()
+                        .HasForeignKey("VeterinarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pet");
+
+                    b.Navigation("Veterinario");
+                });
+
+            modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.ConsultaExame", b =>
+                {
+                    b.HasOne("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Consulta", "Consulta")
+                        .WithMany("Exames")
+                        .HasForeignKey("ConsultaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Exame", "Exame")
+                        .WithMany("Consultas")
+                        .HasForeignKey("ExameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Consulta");
+
+                    b.Navigation("Exame");
+                });
+
             modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Pet", b =>
                 {
                     b.HasOne("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Raca", "Raca")
@@ -389,6 +579,16 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                         .IsRequired();
 
                     b.Navigation("Responsavel");
+                });
+
+            modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Consulta", b =>
+                {
+                    b.Navigation("Exames");
+                });
+
+            modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Exame", b =>
+                {
+                    b.Navigation("Consultas");
                 });
 
             modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Raca", b =>

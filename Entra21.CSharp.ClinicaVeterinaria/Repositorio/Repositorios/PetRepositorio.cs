@@ -54,4 +54,9 @@ public class PetRepositorio : IPetRepositorio
             .Include(x => x.Responsavel) 
             .Include(x => x.Raca)
             .ToList();
+
+    public IList<Pet> ObterTodosPorResponsavelId(int responsavelId) =>
+        _contexto.Pets
+            .Where(x => x.ResponsavelId == responsavelId)
+            .ToList();
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Contatos;
+namespace Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.ResponsaveisContatos;
 
 public class ResponsavelContatoEditarViewModel : ResponsavelContatoBaseViewModel
 {

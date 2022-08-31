@@ -10,11 +10,13 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.InjecoesDependencia
     {
         public static IServiceCollection AdicionarRepositorios(this IServiceCollection services)
         {
+            services.AddScoped<IConsultaRepositorio, ConsultaRepositorio>();
+            services.AddScoped<IExameRepositorio, ExameRepositorio>();
             services.AddScoped<IPetRepositorio, PetRepositorio>();
             services.AddScoped<IRacaRepositorio, RacaRepositorio>();
-            services.AddScoped<IVeterinarioRepositorio, VeterinarioRepositorio>();
-            services.AddScoped<IResponsavelRepositorio, ResponsavelRepositorio>();
             services.AddScoped<IResponsavelContatoRepositorio, ResponsavelContatoRepositorio>();
+            services.AddScoped<IResponsavelRepositorio, ResponsavelRepositorio>();
+            services.AddScoped<IVeterinarioRepositorio, VeterinarioRepositorio>();
 
             return services;
         }

@@ -1,0 +1,38 @@
+<div class="modal fade" id="iniciarAgendamentoConsultaModal" tabindex="-1" aria-labelledby="iniciarAgendamentoConsultaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="iniciarAgendamentoConsultaModalLabel">Cadastro de Agendamento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="iniciarAgendamentoConsultaModalResponsavel" class="form-label">Responsável <span class="text-danger">*</span></label>
+                        <select id="iniciarAgendamentoConsultaModalResponsavel" class="form-select"></select>
+                    </div>
+                    <div class="col-6">
+                        <label for="iniciarAgendamentoConsultaModalPet" class="form-label">PET <span class="text-danger">*</span></label>
+                        <select id="iniciarAgendamentoConsultaModalPet" class="form-select"></select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="iniciarAgendamentoConsultaModalVeterinario" class="form-label">Veterinário <span class="text-danger">*</span></label>
+                        <select id="iniciarAgendamentoConsultaModalVeterinario" class="form-select"></select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="iniciarAgendamentoConsultaModalDataConsulta" class="form-label">Data da Consulta <span class="text-danger">*</span></label>
+                        <input id="iniciarAgendamentoConsultaModalDataConsulta" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                <button type="button" class="btn btn-primary" id="iniciarAgendamentoConsultaModalSalvar"><i class="fa-solid fa-floppy-disk"></i> Agendar</button>
+            </div>
+        </div>
+    </div>
+</div>

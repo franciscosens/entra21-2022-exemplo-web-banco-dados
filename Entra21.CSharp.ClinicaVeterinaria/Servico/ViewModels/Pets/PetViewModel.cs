@@ -13,12 +13,12 @@ public class PetViewModel
     
     [Display(Name = nameof(Peso))]
     [Required(ErrorMessage = "{0} deve ser preenchido")]
-    [Range(0.00, 120.00, ErrorMessage = "{0} deve conter no mínimom {1} e no máximo {2}")]
+    [Range(0.00, 120.00, ErrorMessage = "{0} deve conter no mínimo {1} e no máximo {2}")]
     public decimal? Peso { get; set; }
     
     [Display(Name = nameof(Altura))]
     [Required(ErrorMessage = "{0} deve ser preenchida")]
-    [Range(0.00, 1.60, ErrorMessage = "{0} deve conter no mínimom {1} e no máximo {2}")]
+    [Range(0.00, 1.60, ErrorMessage = "{0} deve conter no mínimo {1} e no máximo {2}")]
     public decimal? Altura { get; set; }
     
     [Display(Name = nameof(Idade))]

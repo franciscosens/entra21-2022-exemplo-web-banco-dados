@@ -1,0 +1,35 @@
+<div class="modal fade" id="cadastroExameModal" tabindex="-1" aria-labelledby="cadastroExameModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cadastroExameModalLabel">Cadastro de Exame</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input id="cadastroExameModalId" class="form-control" type="hidden"/>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="cadastroExameModalNome" class="form-label">Nome <span class="text-danger">*</span></label>
+                        <input id="cadastroExameModalNome" class="form-control"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="cadastroExameModalPreco" class="form-label">Preço <span class="text-danger">*</span></label>
+                        <input id="cadastroExameModalPreco" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label for="cadastroExameModalDescricao" class="form-label">Descrição</label>
+                        <textarea id="cadastroExameModalDescricao" class="form-select"></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                <button type="button" class="btn btn-primary" id="cadastroExameModalSalvar"><i class="fa-solid fa-floppy-disk"></i> Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</div>

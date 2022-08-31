@@ -9,8 +9,8 @@ public class PetController : Controller
 {
     private readonly IPetServico _petServico;
     private readonly IWebHostEnvironment _webHostEnvironment;
-    
-    public PetController(IPetServico petServico, 
+
+    public PetController(IPetServico petServico,
         IWebHostEnvironment webHostEnvironment)
     {
         _petServico = petServico;
@@ -50,7 +50,7 @@ public class PetController : Controller
     }
 
     [HttpPost("cadastrar")]
-    public IActionResult Cadastrar([FromForm]PetCadastrarViewModel petCadastrarViewModel)
+    public IActionResult Cadastrar([FromForm] PetCadastrarViewModel petCadastrarViewModel)
     {
         if (!ModelState.IsValid)
             return UnprocessableEntity(ModelState);
@@ -61,16 +61,15 @@ public class PetController : Controller
     }
 
     [HttpPost("editar")]
-    public IActionResult Editar([FromForm]PetEditarViewModel petEditarViewModel)
+    public IActionResult Editar([FromForm] PetEditarViewModel petEditarViewModel)
     {
         if (!ModelState.IsValid)
             return UnprocessableEntity(ModelState);
 
         var atualizou = _petServico.Editar(petEditarViewModel, _webHostEnvironment.WebRootPath);
 
-        return Ok(new {status= atualizou});
+        return Ok(new { status = atualizou });
     }
-
 
     [HttpGet("apagar")]
     public IActionResult Apagar([FromQuery] int id)
@@ -81,5 +80,13 @@ public class PetController : Controller
             return NotFound();
 
         return Ok();
+    }
+
+    [HttpGet("obterTodosSelect2PorResponsavel")]
+    public IActionResult ObterTodosSelect2([FromQuery] int responsavelId)
+    {
+        var selectViewModel = _petServico.ObterTodosSelect2PorResponsavel(responsavelId);
+
+        return Ok(selectViewModel);
     }
 }

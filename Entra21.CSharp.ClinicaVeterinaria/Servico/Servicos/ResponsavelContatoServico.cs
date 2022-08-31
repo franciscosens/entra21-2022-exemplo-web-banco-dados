@@ -2,7 +2,7 @@
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Repositorios;
 using Entra21.CSharp.ClinicaVeterinaria.Servico.MapeamentoEntidades;
 using Entra21.CSharp.ClinicaVeterinaria.Servico.MapeamentoViewModels;
-using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Contatos;
+using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.ResponsaveisContatos;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Servico.Servicos;
 

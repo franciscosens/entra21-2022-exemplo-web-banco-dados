@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Enums;
 
-namespace Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Contatos;
+namespace Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.ResponsaveisContatos;
 
 public abstract class ResponsavelContatoBaseViewModel : IValidatableObject
 {

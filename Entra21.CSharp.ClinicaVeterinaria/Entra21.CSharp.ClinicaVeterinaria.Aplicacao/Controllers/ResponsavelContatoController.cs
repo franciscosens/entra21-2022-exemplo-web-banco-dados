@@ -1,5 +1,5 @@
 ﻿using Entra21.CSharp.ClinicaVeterinaria.Servico.Servicos;
-using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Contatos;
+using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.ResponsaveisContatos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Aplicacao.Controllers;

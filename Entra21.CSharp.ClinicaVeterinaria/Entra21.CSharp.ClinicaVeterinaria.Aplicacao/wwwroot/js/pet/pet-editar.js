@@ -51,7 +51,6 @@ let petEditarPreencherModal = (botaoEditar) => {
 }
 
 let petEditarPet = (formData) => {
-
     let statusResponse = 0;
 
     fetch('/pet/editar', {

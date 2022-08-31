@@ -9,4 +9,5 @@ public interface IPetRepositorio
     void Editar(Pet pet);
     Pet? ObterPodId(int id);
     IList<Pet> ObterTodos();
+    IList<Pet> ObterTodosPorResponsavelId(int responsavelId);
 }

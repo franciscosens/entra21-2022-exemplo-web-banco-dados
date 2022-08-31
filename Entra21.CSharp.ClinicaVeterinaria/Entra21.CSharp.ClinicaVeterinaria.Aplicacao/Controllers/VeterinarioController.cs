@@ -71,5 +71,13 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Aplicacao.Controllers
 
             return Ok();
         }
+
+        [HttpGet("obterTodosSelect2")]
+        public IActionResult ObterTodosSelect2()
+        {
+            var selectViewModel = _veterinarioServico.ObterTodosSelect2();
+
+            return Ok(selectViewModel);
+        }
     }
 }

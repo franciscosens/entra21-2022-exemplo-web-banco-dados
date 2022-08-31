@@ -25,9 +25,17 @@
                         </a>
                     </li>
                     <li class="nav-item">
-
+                        <a class="nav-link @(controller == "Consulta" ? "active" : "text-white")" asp-controller="Consulta" asp-action="Index">
+                            <span data-feather="file"></span>
+                            Consultas
+                        </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link @(controller == "Exame" ? "active" : "text-white")" asp-controller="Exame" asp-action="Index">
+                            <span data-feather="file"></span>
+                            Exames
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <button class="btn btn-toggle collapsed sidebar-button" data-bs-toggle="collapse" data-bs-target="#pet-collapse" aria-expanded="false">
                             <i class="fa-solid fa-paw"></i> Pet

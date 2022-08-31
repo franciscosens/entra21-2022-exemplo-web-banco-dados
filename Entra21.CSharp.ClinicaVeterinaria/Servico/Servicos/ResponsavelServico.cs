@@ -68,9 +68,9 @@ public class ResponsavelServico : IResponsavelServico
 
     public IList<SelectViewModel> ObterTodosSelect2()
     {
-        var pets = _responsavelRepositorio.ObterTodos();
+        var responsaveis = _responsavelRepositorio.ObterTodos();
 
-        var selectViewModels = pets
+        var selectViewModels = responsaveis
             .Select(x => new SelectViewModel
             {
                 Id = x.Id,

@@ -1,0 +1,32 @@
+<p class="h3">Lista de Consultas</p>
+
+<div class="row">
+    <div class="col-12">
+        <button type="button" class="btn btn-primary mb-2 float-end" data-bs-toggle="modal" data-bs-target="#iniciarAgendamentoConsultaModal">
+            <i class="fa-solid fa-plus"></i> Iniciar Agendamento
+        </button>
+    </div>
+</div>
+
+<table class="table table-striped table-bordered" id="consulta-table">
+    <thead>
+    <tr>
+        <th>Responsável</th>
+        <th>PET</th>
+        <th>Veterinário</th>
+        <th>Data Consulta</th>
+        <th>Ação</th>
+    </tr>
+    </thead>
+</table>
+
+<partial name="IniciarAgendamento"/>
+
+@section Scripts{
+    <script src="~/js/shared/helpers.js"></script>
+    <script src="~/js/consulta/consulta-inciar-agendamento-select2.js"></script>
+    <script src="~/js/consulta/consulta-datatable.js"></script>
+    <script src="~/js/consulta/consulta-iniciar-agendamento.js"></script>
+    @* <script src="~/js/consulta/consulta-editar.js"></script> *@
+    @* <script src="~/js/consulta/consulta-apagar.js"></script> *@
+}
