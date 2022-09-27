@@ -19,8 +19,11 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico.Servicos
 
         public void Editar(RacaEditarViewModel racaEditarViewModel)
         {
-            var raca = new Raca();
-            raca.Id = racaEditarViewModel.Id;
+            var raca = _racaRepositorio.ObterPorId(racaEditarViewModel.Id);
+
+            if (raca == null)
+                return;
+
             raca.Nome = racaEditarViewModel.Nome.Trim();
             raca.Especie = racaEditarViewModel.Especie;
 
