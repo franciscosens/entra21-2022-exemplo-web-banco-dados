@@ -1,0 +1,30 @@
+﻿<p class="h3">Lista de Veterinários</p>
+
+<div class="row">
+    <div class="col-12">
+        <button type="button" class="btn btn-primary mb-2 float-end" data-bs-toggle="modal" data-bs-target="#cadastroVeterinarioModal">
+            <i class="fa-solid fa-plus"></i> Cadastrar
+        </button>
+    </div>
+</div>
+
+<table class="table table-striped table-bordered" id="veterinario-table">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>CRMV</th>
+        <th>Ação</th>
+    </tr>
+    </thead>
+</table>
+
+<partial name="Editar"/>
+<partial name="Cadastrar"/>
+
+
+@section Scripts{
+    <script src="~/js/veterinario/veterinario-datatable.js"></script>
+    <script src="~/js/veterinario/veterinario-cadastro.js"></script>
+    <script src="~/js/veterinario/veterinario-editar.js"></script>
+    <script src="~/js/veterinario/veterinario-apagar.js"></script>
+}

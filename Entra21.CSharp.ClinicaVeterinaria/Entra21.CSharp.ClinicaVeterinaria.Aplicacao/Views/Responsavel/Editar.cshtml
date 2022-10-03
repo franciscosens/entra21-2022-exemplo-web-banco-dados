@@ -1,0 +1,43 @@
+﻿@model ResponsavelEditarViewModel
+
+<h3 class="h3">Editar Responsável - @Model.NomeCompleto</h3>
+
+<div class="row">
+    <div class="col-6">
+        <form asp-action="Editar" method="POST">
+            <input type="hidden" asp-for="Id"/>
+
+            <div class="mb-3">
+                <label asp-for="NomeCompleto" class="form-label" span-required=""></label>
+                <input asp-for="NomeCompleto" class="form-control"/>
+                <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Cpf" class="form-label" span-required=""></label>
+                <input asp-for="Cpf" class="form-control"/>
+                <span asp-validation-for="Cpf" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Idade" class="form-label" span-required=""></label>
+                <input asp-for="Idade" class="form-control"/>
+                <span asp-validation-for="Idade" class="text-danger"></span>
+            </div>
+
+            <div class="text-end">
+                <a asp-action="Index" class="btn btn-outline-danger"><i class="fa-solid fa-xmark"></i> Cancelar</a>
+                <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <partial name="Contatos/ContatoTable"/>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/responsavel/contato/responsavel-contato-apagar.js"></script>
+    <script src="~/js/responsavel/contato/responsavel-contato-editar.js"></script>
+    <script src="~/js/responsavel/contato/responsavel-contato-cadastro.js"></script>
+}

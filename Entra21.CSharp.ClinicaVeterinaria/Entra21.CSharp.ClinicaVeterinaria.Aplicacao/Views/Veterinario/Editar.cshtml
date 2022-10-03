@@ -1,0 +1,26 @@
+﻿<div class="modal fade" id="editarVeterinarioModal" tabindex="-1" aria-labelledby="editarVeterinarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarVeterinarioModalLabel">Editar de Veterinarário</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editarVeterinarioModalId" class="form-control"/>
+                
+                <div class="mb-2">
+                    <label for="editarVeterinarioModalIdade" class="form-label">Idade <span class="text-danger">*</span></label>
+                    <input type="text" id="editarVeterinarioModalIdade" class="form-control"/>
+                </div>
+                <div>
+                    <label for="editarVeterinarioModalSalario" class="form-label">Salário <span class="text-danger">*</span></label>
+                    <input type="text" id="editarVeterinarioModalSalario" class="form-control"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                <button type="button" class="btn btn-primary" id="editarVeterinarioModalSalvar"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
