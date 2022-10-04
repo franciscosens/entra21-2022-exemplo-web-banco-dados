@@ -16,4 +16,6 @@ public class Pet : EntidadeBase
 
     public int ResponsavelId { get; set; }
     public Responsavel Responsavel { get; set; }
+
+    public List<Consulta> Consultas { get; set; }
 }

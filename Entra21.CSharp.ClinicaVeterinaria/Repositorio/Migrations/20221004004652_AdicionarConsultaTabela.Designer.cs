@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
 {
     [DbContext(typeof(ClinicaVeterinariaContexto))]
-    [Migration("20220829163723_AdicionarColunaObservacaoTabelaResponsavelContato")]
-    partial class AdicionarColunaObservacaoTabelaResponsavelContato
+    [Migration("20221004004652_AdicionarConsultaTabela")]
+    partial class AdicionarConsultaTabela
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,62 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Consulta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime?>("DataHoraCancelamento")
+                        .HasColumnType("DATETIME2")
+                        .HasColumnName("data_hora_cancelamento");
+
+                    b.Property<DateTime?>("DataHoraFim")
+                        .HasColumnType("DATETIME2")
+                        .HasColumnName("data_hora_fim");
+
+                    b.Property<DateTime?>("DataHoraInicio")
+                        .HasColumnType("DATETIME2")
+                        .HasColumnName("data_hora_inicio");
+
+                    b.Property<DateTime>("DataHoraPrevista")
+                        .HasColumnType("DATETIME2")
+                        .HasColumnName("data_hora_prevista");
+
+                    b.Property<int>("PetId")
+                        .HasColumnType("INT")
+                        .HasColumnName("pet_id");
+
+                    b.Property<string>("Procedimento")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VARCHAR(50)")
+                        .HasColumnName("procedimento");
+
+                    b.Property<byte>("Status")
+                        .HasColumnType("TINYINT")
+                        .HasColumnName("status");
+
+                    b.Property<decimal>("Valor")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("DECIMAL(10,2)")
+                        .HasColumnName("valor");
+
+                    b.Property<int>("VeterinarioId")
+                        .HasColumnType("INT")
+                        .HasColumnName("veterinario_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PetId");
+
+                    b.HasIndex("VeterinarioId");
+
+                    b.ToTable("consultas", (string)null);
+                });
 
             modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Pet", b =>
                 {
@@ -82,12 +138,72 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                         {
                             Id = 1,
                             Altura = 0.90m,
-                            CaminhoArquivo = "fcd3850a-cbc7-47db-b52b-5e6c8f68bdd4.jpg",
-                            Genero = (byte)1,
+                            CaminhoArquivo = "8BE47EBF-0F7A-455F-B4DB-58001DD9D577.jpg",
+                            Genero = (byte)0,
                             Idade = (byte)8,
-                            Nome = "Mimi",
+                            Nome = "PerMimi",
                             Peso = 20.40m,
                             RacaId = 1,
+                            ResponsavelId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Altura = 0.50m,
+                            CaminhoArquivo = "275E5840-F48D-4E7B-9156-D038C9AB89B4.jpg",
+                            Genero = (byte)0,
+                            Idade = (byte)7,
+                            Nome = "RagMimo",
+                            Peso = 14.0m,
+                            RacaId = 4,
+                            ResponsavelId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Altura = 0.45m,
+                            CaminhoArquivo = "AC74D02A-D3FB-4810-BD05-1A9E46A212CC.webp",
+                            Genero = (byte)1,
+                            Idade = (byte)7,
+                            Nome = "SibMoa",
+                            Peso = 25.0m,
+                            RacaId = 5,
+                            ResponsavelId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Altura = 1.10m,
+                            CaminhoArquivo = "E9B453D3-A676-4433-ABB1-05CCE015AA8F.jpg",
+                            Genero = (byte)1,
+                            Idade = (byte)5,
+                            Nome = "AkitMae",
+                            Peso = 15.60m,
+                            RacaId = 2,
+                            ResponsavelId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Altura = 1.10m,
+                            CaminhoArquivo = "97CCCBCC-B8F9-4E49-AA64-509F3CE65686.webp",
+                            Genero = (byte)1,
+                            Idade = (byte)5,
+                            Nome = "SaoMio",
+                            Peso = 15.60m,
+                            RacaId = 3,
+                            ResponsavelId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Altura = 1.10m,
+                            CaminhoArquivo = "04082D96-249D-4F20-B6C9-9E2FC2C947CB.webp",
+                            Genero = (byte)1,
+                            Idade = (byte)5,
+                            Nome = "SaoMão",
+                            Peso = 15.60m,
+                            RacaId = 3,
                             ResponsavelId = 1
                         });
                 });
@@ -121,13 +237,31 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                         {
                             Id = 1,
                             Especie = "Gato",
-                            Nome = "Frajola"
+                            Nome = "Persa"
                         },
                         new
                         {
                             Id = 2,
-                            Especie = "Capivara",
-                            Nome = "Piupiu"
+                            Especie = "Cachorro",
+                            Nome = "Akita Inu"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Especie = "Cachorro",
+                            Nome = "São-bernardo"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Especie = "Gato",
+                            Nome = "Ragdoll"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Especie = "Gato",
+                            Nome = "Siberiano"
                         });
                 });
 
@@ -206,6 +340,30 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                     b.HasIndex("ResponsavelId");
 
                     b.ToTable("contatos", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Observacao = "Sem observação",
+                            ResponsavelId = 1,
+                            Tipo = (byte)0,
+                            Valor = "francisco@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ResponsavelId = 1,
+                            Tipo = (byte)2,
+                            Valor = "(47) 98801-6374"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ResponsavelId = 2,
+                            Tipo = (byte)2,
+                            Valor = "(47) 99999-6374"
+                        });
                 });
 
             modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Veterinario", b =>
@@ -254,9 +412,30 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                         {
                             Id = 2,
                             Crmv = "89898SC",
-                            Empregado = false,
-                            Nome = "Gui"
+                            Empregado = true,
+                            Idade = 30,
+                            Nome = "Gui",
+                            Salario = 20391.20m
                         });
+                });
+
+            modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Consulta", b =>
+                {
+                    b.HasOne("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Pet", "Pet")
+                        .WithMany("Consultas")
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Veterinario", "Veterinario")
+                        .WithMany("Consultas")
+                        .HasForeignKey("VeterinarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pet");
+
+                    b.Navigation("Veterinario");
                 });
 
             modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Pet", b =>
@@ -289,6 +468,11 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                     b.Navigation("Responsavel");
                 });
 
+            modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Pet", b =>
+                {
+                    b.Navigation("Consultas");
+                });
+
             modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Raca", b =>
                 {
                     b.Navigation("Pets");
@@ -299,6 +483,11 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                     b.Navigation("Contatos");
 
                     b.Navigation("Pets");
+                });
+
+            modelBuilder.Entity("Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades.Veterinario", b =>
+                {
+                    b.Navigation("Consultas");
                 });
 #pragma warning restore 612, 618
         }

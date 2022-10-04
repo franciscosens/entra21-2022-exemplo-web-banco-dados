@@ -15,6 +15,8 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.InjecoesDependencia
             services.AddScoped<IVeterinarioRepositorio, VeterinarioRepositorio>();
             services.AddScoped<IResponsavelRepositorio, ResponsavelRepositorio>();
             services.AddScoped<IResponsavelContatoRepositorio, ResponsavelContatoRepositorio>();
+            
+            services.AddScoped<IConsultaRepositorio, ConsultaRepositorio>();
 
             return services;
         }

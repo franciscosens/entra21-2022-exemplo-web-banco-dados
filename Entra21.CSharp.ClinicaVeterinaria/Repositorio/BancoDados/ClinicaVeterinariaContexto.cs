@@ -39,6 +39,8 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados
             modelBuilder.ApplyConfiguration(new ResponsavelMapeamento());
             modelBuilder.ApplyConfiguration(new ResponsavelContatoMapeamento());
             modelBuilder.ApplyConfiguration(new PetMapeamento());
+
+            modelBuilder.ApplyConfiguration(new ConsultaMapeamento());
         }
     }
 }
