@@ -5,10 +5,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
 {
-    public partial class AdicionarConsultaTabela : Migration
+    public partial class AdicionarRacaTabela : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "procedimentos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nome = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
+                    valor_efetivo = table.Column<decimal>(type: "DECIMAL(10,2)", precision: 10, scale: 2, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_procedimentos", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "racas",
                 columns: table => new
@@ -117,8 +131,10 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     pet_id = table.Column<int>(type: "INT", nullable: false),
                     veterinario_id = table.Column<int>(type: "INT", nullable: false),
-                    valor = table.Column<decimal>(type: "DECIMAL(10,2)", precision: 10, scale: 2, nullable: false),
+                    valor_previsto = table.Column<decimal>(type: "DECIMAL(10,2)", precision: 10, scale: 2, nullable: false),
+                    valor_efetivo = table.Column<decimal>(type: "DECIMAL(10,2)", precision: 10, scale: 2, nullable: true),
                     status = table.Column<byte>(type: "TINYINT", nullable: false),
+                    motivo_cancelamento = table.Column<string>(type: "TEXT", nullable: true),
                     procedimento = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
                     data_hora_prevista = table.Column<DateTime>(type: "DATETIME2", nullable: false),
                     data_hora_fim = table.Column<DateTime>(type: "DATETIME2", nullable: true),
@@ -140,6 +156,43 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                         principalTable: "veterinarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "consultas_procedimentos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    procedimento_id = table.Column<int>(type: "INT", nullable: false),
+                    consulta_id = table.Column<int>(type: "INT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_consultas_procedimentos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_consultas_procedimentos_consultas_consulta_id",
+                        column: x => x.consulta_id,
+                        principalTable: "consultas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_consultas_procedimentos_procedimentos_procedimento_id",
+                        column: x => x.procedimento_id,
+                        principalTable: "procedimentos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "procedimentos",
+                columns: new[] { "Id", "nome", "valor_efetivo" },
+                values: new object[,]
+                {
+                    { 1, "Raio X", 200.90m },
+                    { 2, "Hemograma", 190.90m },
+                    { 3, "Exame de urina", 29.99m },
+                    { 4, "Função hepática", 155.90m }
                 });
 
             migrationBuilder.InsertData(
@@ -207,6 +260,16 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
                 column: "veterinario_id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_consultas_procedimentos_consulta_id",
+                table: "consultas_procedimentos",
+                column: "consulta_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_consultas_procedimentos_procedimento_id",
+                table: "consultas_procedimentos",
+                column: "procedimento_id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_contatos_ResponsavelId",
                 table: "contatos",
                 column: "ResponsavelId");
@@ -225,10 +288,16 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "consultas");
+                name: "consultas_procedimentos");
 
             migrationBuilder.DropTable(
                 name: "contatos");
+
+            migrationBuilder.DropTable(
+                name: "consultas");
+
+            migrationBuilder.DropTable(
+                name: "procedimentos");
 
             migrationBuilder.DropTable(
                 name: "pets");

@@ -1,6 +1,7 @@
 ﻿using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades;
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Repositorios;
 using Entra21.CSharp.ClinicaVeterinaria.Servico.MapeamentoEntidades;
+using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels;
 using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Veterinarios;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Servico.Servicos
@@ -49,5 +50,20 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico.Servicos
 
         public IList<Veterinario> ObterTodos(string pesquisa) =>
             _veterinarioRepositorio.ObterTodos(pesquisa);
+
+        public IList<SelectViewModel> ObterTodosSelect2()
+        {
+            var veterinarios = _veterinarioRepositorio.ObterTodos(string.Empty);
+
+            var selectViewModels = veterinarios
+                .Select(x => new SelectViewModel
+                {
+                    Id = x.Id,
+                    Text = x.Nome
+                })
+                .ToList();
+
+            return selectViewModels;
+        }
     }
 }

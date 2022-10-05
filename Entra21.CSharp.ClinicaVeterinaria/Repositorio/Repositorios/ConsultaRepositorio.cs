@@ -1,6 +1,7 @@
 ﻿using Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados;
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Repositorios
 {
@@ -16,6 +17,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Repositorios
         {
             return _dbSet
                 .Include(x => x.Pet)
+                .ThenInclude(x => x.Raca)
                 .Include(x => x.Veterinario)
                 .ToList();
         }

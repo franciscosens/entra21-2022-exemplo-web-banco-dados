@@ -12,7 +12,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Consultas
         public string Responsavel { get; set; }
         public string Pet { get; set; }
         public int Status { get; set; }
-        public decimal Valor { get; set; }
+        public decimal ValorPrevisto { get; set; }
         public DateTime DataHoraPrevista { get; set; }
     }
 }

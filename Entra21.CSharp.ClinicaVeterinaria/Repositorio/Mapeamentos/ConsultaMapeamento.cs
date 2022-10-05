@@ -33,11 +33,21 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Mapeamentos
             .IsRequired()
             .HasColumnName("pet_id"); // NOT NULL
 
-            builder.Property(x => x.Valor)
+            builder.Property(x => x.MotivoCancelamento)
+                .HasColumnType("TEXT")
+                .HasColumnName("motivo_cancelamento"); // NOT NULL
+
+
+            builder.Property(x => x.ValorPrevisto)
                 .HasColumnType("DECIMAL")
                 .HasPrecision(10, 2)
                 .IsRequired()
-                .HasColumnName("valor"); // NOT NULL
+                .HasColumnName("valor_previsto"); // NOT NULL
+
+            builder.Property(x => x.ValorEfetivo)
+                .HasColumnType("DECIMAL")
+                .HasPrecision(10, 2)
+                .HasColumnName("valor_efetivo"); // NOT NULL
 
             builder.Property(x => x.Status)
             .HasColumnType("TINYINT")
