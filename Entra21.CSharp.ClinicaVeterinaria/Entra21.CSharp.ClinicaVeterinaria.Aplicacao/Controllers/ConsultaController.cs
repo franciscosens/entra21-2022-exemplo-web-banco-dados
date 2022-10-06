@@ -21,7 +21,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Aplicacao.Controllers
         }
 
         [HttpPost("cadastrar")]
-        public IActionResult Cadastrar([FromBody]ConsultaCadastrarViewModel viewModel)
+        public IActionResult Cadastrar(ConsultaCadastrarViewModel viewModel)
         {
             var consulta = _consultaServico.Cadastrar(viewModel);
 
@@ -29,7 +29,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Aplicacao.Controllers
         }
 
         [HttpPost("iniciar")]
-        public IActionResult Iniciar([FromBody]ConsultaIniciarViewModel viewModel)
+        public IActionResult Iniciar(ConsultaIniciarViewModel viewModel)
         {
             _consultaServico.Iniciar(viewModel);
 
@@ -37,15 +37,15 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Aplicacao.Controllers
         }
 
         [HttpPost("cancelar")]
-        public IActionResult Cancelar([FromBody]ConsultaCancelarViewModel viewModel)
+        public IActionResult Cancelar(ConsultaCancelarViewModel viewModel)
         {
             _consultaServico.Cancelar(viewModel);
 
             return Ok();
         }
 
-        [HttpPost("cancelar")]
-        public IActionResult Finalizar([FromBody]ConsultaFinalizarViewModel viewModel)
+        [HttpPost("finalizar")]
+        public IActionResult Finalizar(ConsultaFinalizarViewModel viewModel)
         {
             _consultaServico.Finalizar(viewModel);
 
@@ -60,7 +60,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Aplicacao.Controllers
             return Ok(consultaIndexViewModels);
         }
         
-        [HttpPost("obterTodos")]
+        [HttpPost("adicionarProcedimento")]
         public IActionResult AdicionarProcedimento([FromBody]ConsultaAdicionarProcedimentoViewModel viewModel)
         {
             _consultaServico.AdicionarProcedimento(viewModel);

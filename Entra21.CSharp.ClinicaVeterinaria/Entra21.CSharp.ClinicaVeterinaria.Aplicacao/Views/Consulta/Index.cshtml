@@ -3,8 +3,25 @@
     Cadastrar
 </button>
 
+
+<table class="table table-striped table-bordered" id="tabela-consultas">
+    <thead>
+        <tr>
+            <th>Pet</th>
+            <th>Veterinário</th>
+            <th>Data Prevista</th>
+            <th>Status</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+</table>
+
 <partial name="CadastroModal"/>
+<partial name="CancelarModal"/>
 
 @section Scripts{
     <script src="~/js/consulta/consulta-cadastro.js"></script>
+    <script src="~/js/consulta/consulta-select2.js"></script>
+    <script src="~/js/consulta/consulta-datatable.js"></script>
+    <script src="~/js/consulta/consulta-acoes.js"></script>
 }

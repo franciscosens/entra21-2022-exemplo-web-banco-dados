@@ -1,0 +1,25 @@
+﻿<!-- Modal -->
+<div class="modal fade" id="cancelarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cancelamento da consulta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="campo-id-cancelamento" />
+
+                <div class="form-group">
+                    <label for="campo-motivo" class="form-label">Motivo</label>
+                    <textarea type="text" id="campo-motivo"
+                           class="form-control"></textarea>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" id="botao-modal-cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

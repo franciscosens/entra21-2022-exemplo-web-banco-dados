@@ -2,7 +2,6 @@
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Repositorios
 {
     public class ConsultaRepositorio

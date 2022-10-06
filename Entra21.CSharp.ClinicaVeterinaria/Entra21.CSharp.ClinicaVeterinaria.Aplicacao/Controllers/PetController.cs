@@ -82,4 +82,12 @@ public class PetController : Controller
 
         return Ok();
     }
+
+    [HttpGet("obterTodosSelect2")]
+    public IActionResult ObterTodosSelect2()
+    {
+        var selectViewModel = _petServico.ObterTodosSelect2();
+
+        return Ok(selectViewModel);
+    }
 }

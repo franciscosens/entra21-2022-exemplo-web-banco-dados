@@ -25,7 +25,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico.Servicos
             {
                 PetId = viewModel.PetId,
                 VeterinarioId = viewModel.VeterinarioId,
-                DataHoraPrevista = viewModel.DataHoraPrevista,
+                DataHoraPrevista = viewModel.DataHoraPrevista.GetValueOrDefault(),
                 ValorPrevisto = viewModel.Valor,
                 Procedimento = viewModel.Procedimento,
                 Status = ConsultaStatus.Pendente,
@@ -59,6 +59,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico.Servicos
 
             return consultas.Select(x => new ConsultaIndexViewModel
             {
+                Id = x.Id,
                 Pet = x.Pet.Nome,
                 Responsavel = x.Pet.Responsavel?.NomeCompleto ?? string.Empty,
                 ValorPrevisto = x.ValorPrevisto,
